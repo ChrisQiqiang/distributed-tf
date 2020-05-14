@@ -93,17 +93,17 @@ def train():
                     'global_step', [],
                     initializer=tf.constant_initializer(0), trainable=False)
 
-	    decay_steps = 50000*350.0/FLAGS.batch_size
-	    batch_size = tf.placeholder(dtype=tf.int32, shape=(), name='batch_size')
+        decay_steps = 50000*350.0/FLAGS.batch_size
+        batch_size = tf.placeholder(dtype=tf.int32, shape=(), name='batch_size')
             images, labels = cifar10.distorted_inputs(batch_size)
             print('zx0')
             print(images.get_shape().as_list())
 #            print (str(tf.shape(images))+ str(tf.shape(labels)))
-	    re = tf.shape(images)[0]
+        re = tf.shape(images)[0]
             #network = resnet_model.cifar10_resnet_v2_generator(FLAGS.resnet_size, _NUM_CLASSES)
 
             inputs = tf.reshape(images, [-1, _HEIGHT, _WIDTH, _DEPTH])
-	    logits = vgg.build(inputs, _NUM_CLASSES, True)
+        logits = vgg.build(inputs, _NUM_CLASSES, True)
 #            labels = tf.reshape(labels, [-1, _NUM_CLASSES])
             labels = tf.one_hot(labels, 10, 1, 0)
 
