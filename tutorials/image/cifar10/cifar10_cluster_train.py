@@ -158,7 +158,8 @@ def train():
   else:
     is_chief = (FLAGS.task_index == 0)
     with tf.device(tf.train.replica_device_setter(
-          worker_device="/job:%s/task:%d/%s:0" % (FLAGS.job_name,FLAGS.task_index, "cpu" if FLAGS.job_name == 'ps' else "gpu"),
+          #worker_device="/job:%s/task:%d/%s:0" % (FLAGS.job_name,FLAGS.task_index, "cpu" if FLAGS.job_name == 'ps' else "gpu"),
+          worker_device="/job:worker/task:%d" % FLAGS.task_index,
           cluster=cluster
     )):
       global_step = tf.get_variable(
