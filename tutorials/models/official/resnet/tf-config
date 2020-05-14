@@ -1,0 +1,13 @@
+{"cluster": {"chief": ["10.2.99.3:2222"],"worker": ["10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "chief", "index": 0}}
+
+{"cluster": {"chief": ["10.2.99.3:2222"],"worker": ["10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "worker", "index": 0}}
+
+{"cluster": {"chief": ["10.2.99.3:2222"],"worker": ["10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "ps", "index": 0}}
+
+/tmp/tutorials/models/official/resnet/cifar10_main.py
+
+{"cluster": {"worker": ["10.2.99.3:2222", "10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "ps", "index": 0}}
+
+{"cluster": {"worker": ["10.2.99.3:2222", "10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "worker", "index": 0}}
+
+{"cluster": {"worker": ["10.2.99.3:2222", "10.2.99.4:2222"],"ps": ["10.2.99.2:2222"]},"task": {"type": "worker", "index": 1}}
