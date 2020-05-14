@@ -133,11 +133,11 @@ def train():
                                     save_model_secs=60)
 
         tf.logging.info('%s Supervisor' % datetime.now())
-   	    sess_config = tf.ConfigProto(allow_soft_placement=True,
-   	                                 log_device_placement=FLAGS.log_device_placement)
+        sess_config = tf.ConfigProto(allow_soft_placement=True,
+                                      log_device_placement=FLAGS.log_device_placement)
 
    	    # Get a session.
-   	    sess = sv.prepare_or_wait_for_session(server.target, config=sess_config)
+        sess = sv.prepare_or_wait_for_session(server.target, config=sess_config)
 #	    sess.run(tf.global_variables_initializer())
 
         # Start the queue runners.
