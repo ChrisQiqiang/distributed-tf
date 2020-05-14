@@ -79,7 +79,7 @@ def train():
         print('zx0')
         print(images.get_shape().as_list())
 #       print (str(tf.shape(images))+ str(tf.shape(labels)))
-	    re = tf.shape(images)[0]
+        re = tf.shape(images)[0]
         network = resnet_model.cifar10_resnet_v2_generator(FLAGS.resnet_size, _NUM_CLASSES)
         inputs = tf.reshape(images, [-1, _HEIGHT, _WIDTH, _DEPTH])
 #            labels = tf.reshape(labels, [-1, _NUM_CLASSES])
@@ -148,27 +148,27 @@ def train():
             #sv.start_queue_runners(sess, queue_runners)
 
             sv.start_queue_runners(sess, [chief_queue_runners])
-	    else:
+        else:
              sv.start_queue_runners(sess=sess)
             #sess.run(init_tokens_op)
 
         #"""Train CIFAR-10 for a number of steps."""
         step = 0
         g_step = 0
-	    #time0 = time.time()
-	    batch_size_num = FLAGS.batch_size
+        #time0 = time.time()
+        batch_size_num = FLAGS.batch_size
 #            for step in range(FLAGS.max_steps):
         while g_step <= FLAGS.max_steps:
             start_time = time.time()
             run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
             run_metadata = tf.RunMetadata()
-		    if step <= 5:
-		        batch_size_num = FLAGS.batch_size
+            if step <= 5:
+               batch_size_num = FLAGS.batch_size
                 num_batches_per_epoch = NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN / batch_size_num
                 decay_steps_num = int(num_batches_per_epoch * NUM_EPOCHS_PER_DECAY)
                 _, loss_value, g_step = sess.run([train_op, loss, global_step], feed_dict={batch_size: batch_size_num},  options=run_options, run_metadata=run_metadata)
-    		    tl = timeline.Timeline(run_metadata.step_stats)
-	            ctf = tl.generate_chrome_trace_format()
+                tl = timeline.Timeline(run_metadata.step_stats)
+                ctf = tl.generate_chrome_trace_format()
                 if step % 1 == 0:
                     duration = time.time() - start_time
                     num_examples_per_step = batch_size_num
@@ -179,7 +179,7 @@ def train():
                 step += 1
         # end of while
         sv.stop()
-	    # end of with
+        # end of with
 
 def main(argv=None):
     cifar10.maybe_download_and_extract()
