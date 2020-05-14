@@ -160,7 +160,7 @@ def train():
   is_chief = (FLAGS.task_index == 0)
     # worker_device = '/job:worker/task%d/cpu:0' % FLAGS.task_index
   with tf.device(tf.train.replica_device_setter(
-        worker_device="/job:worker/task:%d" % FLAGS.task_index,
+        worker_device="/job:%s/task:%d" % (FLAGS.job_name,FLAGS.task_index),
         cluster=cluster
   )):
   #with tf.Graph().as_default(), tf.device('/cpu:0'):
